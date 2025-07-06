@@ -1,0 +1,388 @@
+@font-face {
+  font-family: 'Humanst';
+  src: url('humanst.ttf');
+  src: url('humanst?#iefix') format('embedded-opentype'),
+    url('humanst.svg#Locaweb-Icons') format('ttf'),
+    url('humanst.ttf') format('truetype');
+  font-weight: lighter;
+  font-style: oblique;
+}
+@font-face {
+  font-family: 'Futura';
+  src: url('futura-bk.ttf');
+  src: url('futura-bk?#iefix') format('embedded-opentype'),
+    url('futura-bk.svg#Locaweb-Icons') format('ttf'),
+    url('futura-bk.ttf') format('truetype');
+  font-weight: lighter;
+  font-style: oblique;
+}
+* {
+  padding: 0;
+  margin: 0;
+}
+html, body {
+  height:100%;
+  font-family: 'Humanst', 'Futura', Arial;
+  overflow-x:hidden;
+}
+a {
+  text-decoration:none;
+  color:white;
+}
+iframe {
+  width:100%;
+  height:100%;
+}
+.para {
+  box-sizing:border-box;
+  padding: 5%;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  float:left;
+  min-height: 100%;
+  background-color: #ffffff;
+}
+.para header {
+  width:106%;
+  padding-left:6%;
+  position:relative;
+  left:-6%;
+}
+h1 {
+  font-size:3em;
+  margin-bottom:30px;
+}
+#intro {
+  z-index:-1;
+  position:fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+#toony {
+  max-width:600px;
+  width:50%;
+  height:185px;
+}
+#toony img {
+  width:100%;
+}
+.down {
+  width:30px;
+  height:30px;
+  position:absolute;
+  bottom:2%;
+  color: #000000;
+  right:1%;
+  font-size:150%;
+  text-align: center;
+  border-radius:30px;
+  border: #000000 solid 2px;
+}
+#down-toony {
+  background:#ff0000;
+  color:#fff;
+  border:none;
+  right:2%;
+  z-index: 0;
+}
+#prod {
+  border-top: #99fe00 solid 7px;
+  border-bottom: #99fe00 solid 7px;
+  top:100%;
+}
+#prod header {
+  background-color:#99fe00;
+}
+#prod .item {
+  border:#99fe00 solid 7px;
+}
+.item {
+  width:18%;
+  height:150px;
+  margin:1%;
+  box-sizing:border-box;
+  float:left;
+  position:relative;
+  text-align:center;
+  border-radius:2px;
+  overflow:hidden;
+}
+#prod .item:hover, #photo .item:hover, #music .item:hover, #ad .item:hover {
+  border:black solid 7px;
+  transition: all 1000ms;
+  -o-transition: all 1000ms;
+  -webkit-transition: all 1000ms;
+  -moz-transition: all 1000ms;
+}
+#photo {
+  border-top: #00ccff solid 7px;
+  border-bottom: #00ccff solid 7px;
+  top:200%;
+}
+#photo header {
+  background-color:#00ccff;
+}
+#photo .item {
+  border:#00ccff solid 7px;
+}
+#photo .item img {
+  width:100%;
+}
+/* Styles the lightbox, removes it from sight and adds the fade-in transition */
+.lightbox-target {
+  position: fixed;
+  left:0;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  opacity: 0;
+  z-index:10;
+  -webkit-transition: opacity .5s ease-in-out;
+  -moz-transition: opacity .5s ease-in-out;
+  -o-transition: opacity .5s ease-in-out;
+  transition: opacity .5s ease-in-out;
+  overflow: hidden;
+}
+
+/* Styles the lightbox image, centers it vertically and horizontally, adds the zoom-in transition and makes it responsive using a combination of margin and absolute positioning */
+.lightbox-target img {
+  color: white;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width:auto;
+  height: auto;
+  border: 3px solid white;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+  -webkit-transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+}
+/* Styles the close link, adds the slide down transition */
+.lightbox-close {
+  display: block;
+  width: 50px;
+  height: 50px;
+  box-sizing: border-box;
+  background: white;
+  color: black;
+  text-decoration: none;
+  position: absolute;
+  top: -80px;
+  right: 0;
+  -webkit-transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+}
+
+/* Provides part of the "X" to eliminate an image from the close link */
+.lightbox-close:before {
+  content: "";
+  display: block;
+  height: 30px;
+  width: 1px;
+  background: black;
+  position: absolute;
+  left: 26px;
+  top: 10px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/* Provides part of the "X" to eliminate an image from the close link */
+.lightbox-close:after {
+  content: "";
+  display: block;
+  height: 30px;
+  width: 1px;
+  background: black;
+  position: absolute;
+  left: 26px;
+  top: 10px;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+/* Uses the :target pseudo-class to perform the animations upon clicking the .lightbox-target anchor */
+.lightbox-target:target {
+  opacity: 1;
+  top: 0;
+  bottom: 0;
+}
+.lightbox-target:target img {
+  max-height: 600px;
+  max-width: 900px;
+}
+.lightbox-target:target a.lightbox-close {
+  top: 0px;
+}
+#music {
+  border-top: #fe0000 solid 7px; 
+  border-bottom: #fe0000 solid 7px; 
+  top:300%;
+}
+#music header {
+  background-color: #fe0000;
+}
+#music .item {
+  border:#fe0000 solid 7px;
+}
+#ad {
+  border-top: #ffcc03 solid 7px; 
+  border-bottom: #ffcc03 solid 7px; 
+  top:400%;
+}
+#ad header {
+  background-color: #ffcc03;
+}
+#ad .item {
+  border:#ffcc03 solid 7px;
+}
+#ad .item img {
+  height:100%;
+}
+#footer {
+  top:500%;
+  background-color: #fff;
+  text-align:center;
+  border-top: #000000 solid 7px;
+  border-bottom: #000000 solid 7px;
+}
+#footer h1 {
+  margin-top:10%;
+}
+.social { 
+  width:100%;
+  height:90px; 
+  margin-top:2em;
+}
+.social div {
+  width:230px;
+  height:100%;
+  margin:0 auto;
+}
+.social-logo {
+  width: 65px;
+  height: 65px;
+  box-sizing:border-box;
+  margin: 5px;
+  float:left;
+  background-size: 100%;
+}
+#youpic {
+  background-image: url(youpic1.svg);
+}
+#youpic:hover {
+  background-image: url(youpic2.svg);
+  transition: all 1000ms;
+  -o-transition: all 1000ms;
+  -webkit-transition: all 1000ms;
+  -moz-transition: all 1000ms;
+}
+#face {
+  background-image: url(face1.svg);
+}
+#face:hover {
+  background-image: url(face2.svg);
+  transition: all 1000ms;
+  -o-transition: all 1000ms;
+  -webkit-transition: all 1000ms;
+  -moz-transition: all 1000ms;
+}
+#linked {
+  background-image: url(in1.svg);
+}
+#linked:hover {
+  background-image: url(in2.svg);
+  transition: all 1000ms;
+  -o-transition: all 1000ms;
+  -webkit-transition: all 1000ms;
+  -moz-transition: all 1000ms;
+}
+
+@media screen and (max-width: 1030px) {
+   .item {
+     height:130px; 
+   }
+}
+@media screen and (max-width: 770px) {
+  .down {
+    height:20px;
+    width:20px;
+    font-size:1em;
+  }
+  #down-toony {
+    right:4%;
+  }
+  .item {
+    width:48%;
+    height:200px;
+  }
+  #photo .lightbox-target:target img {
+    width: 100%;
+  }
+  #footer h1 {
+    margin-top:35%;
+  }
+  .social div {
+  width:150px;
+  }
+  .social-logo {
+  width: 40px;
+  height: 40px;
+  box-sizing:border-box;
+  margin: 5px;
+  float:left;
+  background-size: 100%;
+}
+}
+@media screen and (max-width:590px) {
+  .down {
+    height:15px;
+    width:15px;
+    font-size:0.7em;
+    border: #000000 solid 1px;
+  }
+  .item {
+    height:150px;
+  }
+  #photo .lightbox-target:target img, #ad .lightbox-target:target img {
+    max-height:90%;
+    max-width: 95%;
+  }
+  #prod .item {
+    border:#99fe00 solid 7px;
+  }
+  #photo .item {
+    border:#00ccff solid 5px;
+  }
+  #music .item {
+    border:#fe0000 solid 5px;
+  }
+  #ad .item {
+    border:#ffcc03 solid 5px;
+  }
+  h1 {
+    font-size:1.5em;   
+  }
+}
+@media screen and (max-width:480px) {
+  h2 {
+    font-size:1em;
+  }
+  .item {
+    height:90px;
+  }
+}
